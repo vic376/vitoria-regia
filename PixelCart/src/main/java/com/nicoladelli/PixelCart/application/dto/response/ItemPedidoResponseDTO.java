@@ -2,7 +2,7 @@ package com.nicoladelli.PixelCart.application.dto.response;
 
 import java.math.BigDecimal;
 
-public record ItemPedidoResponse(
+public record ItemPedidoResponseDTO(
 
         String nomeProduto,
         int quantidade,

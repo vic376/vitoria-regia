@@ -3,9 +3,7 @@ package com.nicoladelli.PixelCart.application.dto.request;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CPF;
 
-import java.math.BigDecimal;
-
-public record UsuarioRequest(
+public record UsuarioRequestDTO(
 
         @NotNull(message = "O nome não pode ser nulo")
         String nome,

@@ -18,14 +18,14 @@ public class PagamentoService {
     private final PedidoRepository repository;
 
     public PagamentoResponseDTO processarPagamento(Long id){
-        Pedido pedido = repository.findById(id)
+        var pedido = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
 
-        IPagamentoStrategy strategy = selector.selecionar(pedido.getMetodoPagamento());
-        PagamentoResponseDTO respondeDTO = strategy.processar(pedido);
+            IPagamentoStrategy strategy = selector.selecionar(pedido.getMetodoPagamento());
+            PagamentoResponseDTO respondeDTO = strategy.processar(pedido);
 
-        pedido.setMpPaymentId(respondeDTO.mpPaymentId());
-        repository.save(pedido);
+             pedido.setMpPaymentId(respondeDTO.mpPaymentId());
+             repository.save(pedido);
 
         return respondeDTO;
     }

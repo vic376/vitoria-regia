@@ -1,6 +1,5 @@
 package com.nicoladelli.PixelCart.application.dto.request;
 
-import com.nicoladelli.PixelCart.domain.model.MetodoPagamento;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -8,7 +7,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 
 import java.math.BigDecimal;
 
-public record ProdutoRequest(
+public record ProdutoRequestDTO(
 
         @NotNull(message = "O nome não pode ser nulo")
         String nome,

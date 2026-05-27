@@ -1,12 +1,15 @@
 package com.nicoladelli.PixelCart.domain.service;
 
-import com.nicoladelli.PixelCart.application.dto.response.PedidoResponse;
+import com.nicoladelli.PixelCart.application.dto.request.PedidoRequestDTO;
+import com.nicoladelli.PixelCart.application.dto.response.PedidoResponseDTO;
+import com.nicoladelli.PixelCart.application.mapper.PedidoMapper;
 import com.nicoladelli.PixelCart.domain.model.Pedido;
 import com.nicoladelli.PixelCart.infrastructure.repository.PedidoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 
@@ -19,16 +22,25 @@ public class PedidoService {
         this.repository = repository;
     }
 
-    public Pedido criarPedido (Pedido pedido){
-        return repository.save(pedido);
-    }
-//response dps
-    public List<Pedido> listarPedidos (){
-        return repository.findAll();
-    }//só eu vejo
+    public PedidoResponseDTO save (PedidoRequestDTO requestDTO){
+        var pedido = PedidoMapper.toModel(requestDTO);
+        var pedidoSalvo = repository.save(pedido);
+        return PedidoMapper.toDTO(pedidoSalvo);
 
-    public Optional<Pedido> listarPorId (Long id){
-        return repository.findById(id);
+    }
+    public List<PedidoResponseDTO> findAll (){
+        List<Pedido> pedidos = repository.findAll();
+        return pedidos.stream()
+                .map(PedidoMapper::toDTO)
+                .collect(Collectors.toList());
+
+    }
+
+    public PedidoResponseDTO findById (Long id){
+        var pedido = repository.findById(id)
+
+                .orElseThrow(() -> new RuntimeException("Erro ao listar pedidos!"));
+        return PedidoMapper.toDTO(pedido);
     }
     
 }

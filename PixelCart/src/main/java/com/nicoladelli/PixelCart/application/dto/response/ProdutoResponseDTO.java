@@ -1,12 +1,8 @@
 package com.nicoladelli.PixelCart.application.dto.response;
 
-import com.nicoladelli.PixelCart.domain.model.MetodoPagamento;
-import com.nicoladelli.PixelCart.domain.model.StatusPedido;
-
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
-public record ProdutoResponse(
+public record ProdutoResponseDTO(
 
         Long id,
         String nome,

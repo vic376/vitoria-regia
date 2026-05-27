@@ -1,13 +1,15 @@
 package com.nicoladelli.PixelCart.application.mapper;
 
-import com.nicoladelli.PixelCart.application.dto.request.UsuarioRequest;
-import com.nicoladelli.PixelCart.application.dto.response.UsuarioResponse;
+import com.nicoladelli.PixelCart.application.dto.request.UsuarioRequestDTO;
+import com.nicoladelli.PixelCart.application.dto.response.UsuarioResponseDTO;
 import com.nicoladelli.PixelCart.domain.model.Usuario;
 
 public class UsuarioMapper {
 
-    public static UsuarioResponse toDTO (Usuario usuario){
-        return new UsuarioResponse(
+    ;
+
+    public static UsuarioResponseDTO toDTO (Usuario usuario){
+        return new UsuarioResponseDTO(
                 usuario.getId(),
                 usuario.getNome(),
                 usuario.getEmail(),
@@ -18,7 +20,7 @@ public class UsuarioMapper {
         );
     }
 
-    public static Usuario toModel (UsuarioRequest dto){
+    public static Usuario toModel (UsuarioRequestDTO dto){
         Usuario usuario = new Usuario();
         usuario.setNome(dto.nome());
         usuario.setEmail(dto.email());

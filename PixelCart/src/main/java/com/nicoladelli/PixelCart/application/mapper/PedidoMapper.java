@@ -1,24 +1,24 @@
 package com.nicoladelli.PixelCart.application.mapper;
 
-import com.nicoladelli.PixelCart.application.dto.request.PedidoRequest;
-import com.nicoladelli.PixelCart.application.dto.response.ItemPedidoResponse;
-import com.nicoladelli.PixelCart.application.dto.response.PedidoResponse;
+import com.nicoladelli.PixelCart.application.dto.request.PedidoRequestDTO;
+import com.nicoladelli.PixelCart.application.dto.response.ItemPedidoResponseDTO;
+import com.nicoladelli.PixelCart.application.dto.response.PedidoResponseDTO;
 import com.nicoladelli.PixelCart.domain.model.Pedido;
 
 import java.util.List;
 
 public class PedidoMapper {
 
-    public static PedidoResponse toDTO (Pedido pedido){
-        List<ItemPedidoResponse> itens = pedido.getItens()
+    public static PedidoResponseDTO toDTO (Pedido pedido){
+        List<ItemPedidoResponseDTO> itens = pedido.getItens()
                 .stream()
-                .map(item -> new ItemPedidoResponse(
+                .map(item -> new ItemPedidoResponseDTO(
                         item.getProduto().getNome(),
                         item.getQuantidade(),
                         item.getPreco_unit()
                 ))
                 .toList();
-        return new PedidoResponse(
+        return new PedidoResponseDTO(
           pedido.getId(),
           pedido.getNumero_pedido(),
           pedido.getTotal(),
@@ -29,7 +29,7 @@ public class PedidoMapper {
         );
     }
 
-    public static Pedido toModel (PedidoRequest dto){
+    public static Pedido toModel (PedidoRequestDTO dto){
         Pedido pedido = new Pedido();
         pedido.setMetodoPagamento(dto.metodoPagamento());
         return pedido;

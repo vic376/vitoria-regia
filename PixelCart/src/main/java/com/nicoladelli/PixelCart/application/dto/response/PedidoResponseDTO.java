@@ -4,11 +4,10 @@ import com.nicoladelli.PixelCart.domain.model.MetodoPagamento;
 import com.nicoladelli.PixelCart.domain.model.StatusPedido;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public record PedidoResponse(
+public record PedidoResponseDTO(
 
         Long id,
         String numero_pedido,
@@ -16,7 +15,7 @@ public record PedidoResponse(
         StatusPedido statusPedido,
         MetodoPagamento metodoPagamento,
         LocalDateTime criacaoPedido,
-        List<ItemPedidoResponse> itens
+        List<ItemPedidoResponseDTO> itens
 ) {
 }
 

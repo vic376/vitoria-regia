@@ -1,6 +1,6 @@
 package com.nicoladelli.PixelCart.application.dto.response;
 
-public record UsuarioResponse(
+public record UsuarioResponseDTO(
 
         Long id,
         String nome,

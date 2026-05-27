@@ -1,13 +1,13 @@
 package com.nicoladelli.PixelCart.application.mapper;
 
-import com.nicoladelli.PixelCart.application.dto.request.ProdutoRequest;
-import com.nicoladelli.PixelCart.application.dto.response.ProdutoResponse;
+import com.nicoladelli.PixelCart.application.dto.request.ProdutoRequestDTO;
+import com.nicoladelli.PixelCart.application.dto.response.ProdutoResponseDTO;
 import com.nicoladelli.PixelCart.domain.model.Produto;
 
 public class ProdutoMapper {
 
-    public static ProdutoResponse toDTO(Produto produto) {
-        return new ProdutoResponse(
+    public static ProdutoResponseDTO toDTO(Produto produto) {
+        return new ProdutoResponseDTO(
                 produto.getId(),
                 produto.getNome(),
                 produto.getDescricao(),
@@ -18,7 +18,7 @@ public class ProdutoMapper {
         );
     }
 
-    public static Produto toModel(ProdutoRequest dto) {
+    public static Produto toModel(ProdutoRequestDTO dto) {
         Produto produto = new Produto();
         produto.setNome(dto.nome());
         produto.setDescricao(dto.descricao());
